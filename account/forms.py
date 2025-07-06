@@ -2,6 +2,7 @@ from django import forms
 from .models import User
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
+from django.core import validators
 
 
 
@@ -16,7 +17,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["email",]
+        fields = ["phone",]
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -45,5 +46,17 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["email", "password", "is_active", "is_admin"]
+        fields = ["phone", "password", "is_active", "is_admin"]
 
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(50)])  
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+
+class OtpLoginForm(forms.Form):
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(50)])  
+
+class CheckOtpForm(forms.Form):
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(4)])       
+          
+          

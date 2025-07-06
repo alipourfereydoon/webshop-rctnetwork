@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from account.models import User
+from account.models import User,Otp
 
 from . forms import UserCreationForm,UserChangeForm
 
@@ -14,7 +14,7 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ["email", "is_admin"]
+    list_display = ["phone","email", "is_admin"]
     list_filter = ["is_admin"]
     fieldsets = [
         (None, {"fields": ["email", "password"]}),
@@ -42,3 +42,5 @@ admin.site.register(User, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
+
+admin.site.register(Otp)
