@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from account.models import User,Otp
+from account.models import User,Otp,Address
 
 from . forms import UserCreationForm,UserChangeForm
 
@@ -44,3 +44,4 @@ admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
 
 admin.site.register(Otp)
+admin.site.register(Address)

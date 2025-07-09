@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from . import models
+
+class OrderItemAdmin(admin.TabularInline):
+    model = models.OrderItem
+
+@admin.register(models.Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display =('user','is_paid')
+    inlines = (OrderItemAdmin,)
+    list_filter = ('is_paid',)

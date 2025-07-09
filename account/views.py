@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login,logout
 from django.shortcuts import render,redirect,reverse
 from django.views import View
-from .forms import LoginForm,OtpLoginForm,CheckOtpForm
+from .forms import LoginForm,OtpLoginForm,CheckOtpForm,AddressCreationForm
 import ghasedakpack
 from random import randint
 from .models import Otp,User
@@ -71,6 +71,20 @@ class CheckOtpView(View):
             else:
                 form.add_error("phone",'invalide data')
             return render(request,'account/check_otp.html',{'form':form})  
+
+class AddAddressView(View):
+    def post(self,request):
+        form = AddressCreationForm(request.POST)
+        if form.is_valid():
+            address = form.save(commit=False)
+            address.user = request.user
+            address.save()
+
+        return render(request,'account/add_address.html',{'form':form})
+
+    def get(self,request):
+        form = AddressCreationForm()
+        return render(request,'account/add_address.html',{'form':form})    
 
 
 def userlogout(request):

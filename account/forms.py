@@ -3,6 +3,7 @@ from .models import User
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from django.core import validators
+from account.models import Address
 
 
 
@@ -52,6 +53,14 @@ class UserChangeForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(50)])  
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+
+class AddressCreationForm(forms.ModelForm):
+    user = forms.IntegerField(required=False)
+    class Meta:
+        model = Address
+        fields = "__all__"
+
+
 
 class OtpLoginForm(forms.Form):
     phone = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(50)])  
