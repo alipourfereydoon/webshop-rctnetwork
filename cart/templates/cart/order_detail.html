@@ -51,22 +51,30 @@
                             <h5>Total</h5>
                             <h5>${{ order.total_price }}</h5>
                         </div>
-                        {% if request.user.addresses.all %}
+                        {% comment %} {% if request.user.addresses.all %}
                         <a href=" {% url "cart:order_creation" %} " 
                         class="btn btn-block btn-success font-weight-bold my-3 py-3">pay</a>
-                        {% endif %}
+                        {% endif %} {% endcomment %}
 
                     </div>
                 </div>
             
             {% if request.user.addresses.all  %}
-            <select class="form-control" aria-label="Default select example">
+            <form action="{% url "cart:send_request" order.id %} " method="post">
+                {% csrf_token %}
+            <select name="address" class="form-control" aria-label="Default select example">
             {% for address  in request.user.addresses.all %}
-            <option value="3">{{address.address }}</option>
+            <option value="{{address.id }}">{{address.address }}</option>
             {% endfor %}
             </select>
+
             <a href=" {% url "account:add_address" %}?next={% url "cart:order_detail" order.id %} "
             class="btn btn-block btn-danger font-weight-bold my-3 py-3">add another address</a>
+            <button type="submit" class="btn btn-block btn-success font-weight-bold my-3 py-3">pay</button>
+
+
+            </form>
+
             {% else %}
             <a href=" {% url "account:add_address" %}?next={% url "cart:order_detail" order.id %} "
             class="btn btn-block btn-danger font-weight-bold my-3 py-3">you dont have any address</a>

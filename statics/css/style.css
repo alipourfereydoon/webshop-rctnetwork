@@ -5,6 +5,49 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+/* @font-face {
+  font-family: 'yekan';
+  src: url('fonts/yekan.eot?#iefix') format('embedded-opentype');
+  src: url('fonts/yekan.ttf') format('truetype');
+  src: url('fonts/yekan.woff') format('woff')
+}
+
+ @font-face {
+  font-family:vazir;
+  src: url(fonts/vazir.ttf) format(ttf);
+  src: url(fonts/vazir.woff) format(wof);
+ } */
+ /* @font-face {
+  font-family:tanha;
+  src: url(fonts/Tanha.ttf) format(ttf);
+  src: url(fonts/tanha.woff) format(woff);
+  src: url(fonts/Tanha.woff2) format(woff2);
+  src: url(fonts/Tanha.eot) format(eot)
+ } */
+
+@font-face {
+  font-family: 'yekan';
+  src: url('../fonts/Yekan.eot');
+  src: url('../fonts/Yekan.eot?#iefix') format('FontName-opentype'),
+       url('../fonts/Yekan.woff') format('woff'),
+       url('../fonts/Yekan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+font{
+  font-family: 'yekan'!important ;
+}
+.first{
+  display:grid;     
+  width: 100%;         
+  box-sizing: border-box;
+  place-items: center !important;
+  margin-bottom: 2rem;
+  font-size:medium;
+}
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -43,7 +86,7 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family:'yekan', sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -64,7 +107,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family:'yekan',"Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -89,6 +132,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'yekan';
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
@@ -96,6 +140,7 @@ h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-size: "yekan" !important;
 }
 
 abbr[title],
@@ -190,7 +235,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family:'yekan', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em;
 }
 
@@ -252,7 +297,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family:'yekan', inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -6132,7 +6177,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family:'yekan', "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6256,7 +6301,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Roboto", sans-serif;
+  font-family:'yekan', "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -10285,7 +10330,7 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family:'yekan', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
 .text-justify {
