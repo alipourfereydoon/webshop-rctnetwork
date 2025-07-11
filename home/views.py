@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,ListView
+from product.models import Product
 
 class Home(TemplateView):
     template_name = "home/index.html"
@@ -10,3 +11,7 @@ class Home(TemplateView):
         self.request.session.get('my_name','ali')    
         return context
     
+class ProductList(ListView):
+    model = Product.objects.all()
+    context_object_name = 'products'
+    template_name='home/index.html'
