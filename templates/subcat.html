@@ -1,0 +1,10 @@
+ {% load static %}
+<ul class="child">
+    {% for category in category.subs.all %}
+    <li class="parent"><a  href=""  style="display: inline-block; font-size: 1rem; "   >{{category.title}}<span class="expand"></span></a>
+       {% if category.subs.all %}
+         {% include "subcat.html" %}
+        {% endif %}
+    </li>
+    {% endfor %} 
+</ul>

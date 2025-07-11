@@ -10949,3 +10949,75 @@ h6 {
     width: 100%;
   }
 }
+
+
+/* --------------------------------------------------------- */
+
+.parent {
+	display: block;
+	position: relative;
+	float: left;
+	line-height: 30px;
+	background-color:#4A102A;
+	border-right: #CCC 1px solid;
+  border-radius: 5px;
+}
+
+.parent a {
+	margin: 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.parent:hover>ul {
+	display: block;
+	position: absolute;
+  
+}
+
+.child {
+	display: none;
+}
+
+
+.child li {
+	background-color:#D9A299;
+	line-height: 45px;
+	border-bottom: #CCC 1px solid;
+	border-right: #CCC 1px solid;
+	width: 100%;
+  z-index: 999;
+  min-width: 15em;
+}
+
+.child li a {
+	color: #000000;
+}
+
+.ulstyle {
+	list-style: none;
+	margin: 0;
+	padding: 0px;
+	min-width: 10em;
+  display: flex;
+}
+
+ul ul ul {
+	left: 100%;
+	top: 0;
+	margin-left: 1px;
+}
+
+li:hover {
+	background-color: #D9A299;
+}
+
+.parent li:hover {
+	background-color: #F0F0F0;
+}
+
+.expand {
+	font-size: 12px;
+	float: right;
+	margin-right: 5px;
+}
