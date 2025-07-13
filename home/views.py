@@ -15,3 +15,8 @@ class ProductList(ListView):
     model = Product.objects.all()
     context_object_name = 'products'
     template_name='home/index.html'
+
+
+def aboutus(request):
+    return render(request,'home/aboutus.html',{})
+    
