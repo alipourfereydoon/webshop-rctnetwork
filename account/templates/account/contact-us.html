@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<div class="con-main">
+  <div class="container-contact">
+    <h1 class="con">تماس با ما</h1>
+    <form action="" method="POST" enctype="text/plain" class="conform">
+      <label class="conlabel" for="name">نام و نام خانوادگی</label>
+      <input class="coninput" type="text" id="name" name="name" placeholder="لطفا نام و نام خانوادگی خود را وارد کنید" required />
+
+      <label class="conlabel" for="email">ایمیل</label>
+      <input class="coninput" type="email" id="email" name="email" placeholder="ali.pourferydoon1983@gmail.com" required />
+
+      <label class="conlabel" for="message">پیام</label>
+      <textarea class="coninput" id="message" name="message" rows="5" placeholder="متن پیام خود را تایپ کنید" required></textarea>
+
+      <button class="conbutton" type="submit">ارسال</button>
+    </form>
+  </div>
+
+</div>
+{% endblock main %}

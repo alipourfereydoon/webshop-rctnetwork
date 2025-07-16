@@ -97,6 +97,9 @@ def userlogout(request):
     logout(request)
     return redirect('/')
 
+def contactus(request):
+    return render(request,'account/contact-us.html')
+
 
 
 
