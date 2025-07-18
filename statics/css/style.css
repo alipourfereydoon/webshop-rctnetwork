@@ -11154,3 +11154,54 @@ li:hover {
 .conbutton:hover{
   background-color: #5952d4;
 }
+
+
+/* site view statics start */
+.stat{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container-stat {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.h1-stat {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.stat-card {
+    background-color: #e9ecef;
+    flex: 1 1 200px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.stat-card:hover {
+    background-color: #dee2e6;
+    transform: translateY(-5px);
+}
+.stat-card h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #495057;
+}
+.count {
+    font-size: 2em;
+    font-weight: bold;
+    color: #17a2b8;
+}
+
+/* site view statics end */

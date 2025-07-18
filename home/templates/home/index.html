@@ -106,7 +106,7 @@
   
             {% for product in products %}
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href=" {% url "Product:product_detail" pk=product.id %}">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <img class="img-fluid" src="{{ product.image.url }}" alt="">
@@ -138,7 +138,7 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src=" {{ item.image.url}}" alt="">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href="{% url 'Product:product_detail' pk=item.id %}"><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
@@ -147,7 +147,7 @@
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">{{ item.title}}</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>${{item.price}}</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                            <h5>  {{item.price}} تومان</h5><h6 class="text-muted ml-2"><del>تومان {{item.price}}</del></h6>
                         </div>
                         
                     </div>
@@ -167,9 +167,8 @@
                 <div class="product-offer mb-30" style="height: 300px;">
                     <img class="img-fluid" src="{% static 'img/carousel-2.jpg' %}" alt="">
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <h6 class="text-white text-uppercase">با تخفیف ویژه</h6>
+                        <a href="" class="btn btn-primary">خریداری آنلاین</a>
                     </div>
                 </div>
             </div>
@@ -177,9 +176,8 @@
                 <div class="product-offer mb-30" style="height: 300px;">
                     <img class="img-fluid" src="{% static 'img/shahreraz.jpg' %}" alt="">
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <h6 class="text-white text-uppercase">با تخفیف ویژه</h6>
+                        <a href="" class="btn btn-primary">خریداری آنلاین</a>
                     </div>
                 </div>
             </div>
@@ -199,7 +197,7 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="{{job.image.url}}" alt="">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href="jobdetail1/{{job.id}}"><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
@@ -208,7 +206,7 @@
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">{{job.title}}</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>${{job.price}}</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                            <h5>تومان{{job.price}}</h5><h6 class="text-muted ml-2"><del> تومان {{job.price}}</del></h6>
                         </div>
                         
                     </div>
@@ -257,7 +255,39 @@
         </div>
     </div>
     <!-- Vendor End -->
+   
 
+    <!--site view statics start--> 
+    <div class="stat">
+<div class="container-stat">
+        <h3 class="h1-stat">آمار بازدید های سایت </h3>
+        <div class="stats">
+            <div class="stat-card">
+                <h2>مجموع بازدید ها</h2>
+                
+                 <p class="count" id="total-visits">{{visit_count}}</p>
+                
+            
+               
+            
+
+            </div>
+            <div class="stat-card">
+                <h2>مجموع بازدید های امروز</h2>
+                <p class="count" id="today-visits">{{daily_visits}}</p>
+            </div>
+            <div class="stat-card">
+                <h2>مجموع بازدید های این هفته</h2>
+                <p class="count" id="weekly-visits">{{weekly_visits}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+    
+
+    <!--site view statics end--> 
 
 
 {% endblock main %}
