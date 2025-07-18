@@ -17,3 +17,11 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(models.Color)
 admin.site.register(models.Size)
 admin.site.register(models.Information)
+
+class InformationjobAdmin(admin.StackedInline):
+    model = models.Informationjob
+
+@admin.register(models.Job)
+class JobAdmin(admin.ModelAdmin):
+    list_display = ('title','price')
+    inlines = (InformationjobAdmin,)
