@@ -11205,3 +11205,15 @@ li:hover {
 }
 
 /* site view statics end */
+
+
+.hide-on-small {
+  display: inline-block; 
+}
+
+/* Hide the span with class 'hide-on-small' on screens smaller than 600px */
+@media (max-width: 600px) {
+  .hide-on-small {
+    display: none;
+  }
+}

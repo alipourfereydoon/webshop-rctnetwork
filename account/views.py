@@ -4,7 +4,7 @@ from django.views import View
 from .forms import LoginForm,OtpLoginForm,CheckOtpForm,AddressCreationForm
 import ghasedakpack
 from random import randint
-from .models import Otp,User
+from .models import Otp,User,Contact
 from django.utils.crypto import get_random_string
 from uuid import uuid4
 
@@ -98,6 +98,12 @@ def userlogout(request):
     return redirect('/')
 
 def contactus(request):
+    name = request.GET.get('name')
+    email = request.GET.get('email')
+    message = request.GET.get('message')
+    if name and email and message:
+        Contact.objects.create(fullname=name , email=email , description = message)
+        return redirect('/')
     return render(request,'account/contact-us.html')
 
 

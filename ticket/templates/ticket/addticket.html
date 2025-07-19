@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<div class="con-main" style="direction: rtl;">
+  <div class="container-contact">
+    <h1 class="con"> ارسال تیکت جدید</h1>
+    
+    <form action="" method="get"  class="conform">
+             
+      <label class=" conlabel" for="name"> موضوع</label>
+      <input class="coninput" type="text" id="name" name="name" placeholder="موضوع تیکت خود را وارد کنید" required />
+
+      <label class="conlabel" for="message">توضیحات</label>
+      <textarea class="coninput" id="message" name="body" rows="5" placeholder="متن تیکت خود را تایپ کنید" required></textarea>
+
+      <button class="conbutton" type="submit">ارسال</button>
+    </form>
+  </div>
+
+</div>
+{% endblock main %}

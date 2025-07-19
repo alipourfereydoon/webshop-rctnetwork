@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'product',
     'cart',
     'widget_tweaks',
-    'django_render_partial'
+    'django_render_partial',
+    'ticket',
 ]
 
 MIDDLEWARE = [

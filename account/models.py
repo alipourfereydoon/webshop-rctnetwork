@@ -95,3 +95,11 @@ class Address(models.Model):
     def __str__(self):
         return self.user.phone
     
+class Contact(models.Model):
+    fullname = models.CharField(max_length=100)
+    email = models.EmailField(blank=True,null=True)
+    description = models.CharField(max_length=400)
+
+    def __str__(self):
+        return self.fullname    
+    
