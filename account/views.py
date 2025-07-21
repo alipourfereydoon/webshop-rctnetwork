@@ -104,6 +104,12 @@ def contactus(request):
     if name and email and message:
         Contact.objects.create(fullname=name , email=email , description = message)
         return redirect('/')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')  
+        Contact.objects.create(fullname=name , email=email , description = message)
+        return redirect('/') 
     return render(request,'account/contact-us.html')
 
 
