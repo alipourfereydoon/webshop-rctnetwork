@@ -5,6 +5,7 @@ from . models import SiteStatistics
 from django.http import HttpResponse
 from datetime import datetime, timedelta
 from django.utils.timezone import now
+from django.core.paginator import Paginator
 
 class Home(TemplateView):
     template_name = "home/index.html"
@@ -56,4 +57,10 @@ def jobdetail(request,id):
     return render(request,'product/job.html', context={'jobs':jobs})       
 
 
-
+def search(request):
+    search = request.GET.get('search')
+    products = Product.objects.filter(title__icontains=search)
+    page_number = request.GET.get('page')
+    paginator = Paginator(products,1)
+    object_list = paginator.get_page(page_number)
+    return render(request,'product/products_list.html',{'products':object_list})
