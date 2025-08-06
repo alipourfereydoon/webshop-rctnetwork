@@ -63,12 +63,10 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         return self.is_admin
     
-class Otp(models.Model):
+class Register(models.Model):
     token = models.CharField(max_length=200 , null=True)
     phone = models.CharField(max_length=12) 
-    code = models.IntegerField()
-    expiration_date = models.DateTimeField(auto_now_add=True)
-
+    
     def __str__(self):
         return self.phone
     

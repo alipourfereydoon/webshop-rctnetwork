@@ -167,7 +167,7 @@
                     <form method="post" >
                         {% csrf_token %}
                         <div class="control-group">
-                           {% for error in form.phone.errors %}
+                           {% for error in form.username.errors %}
                            <p class="alert alert-danger">{{ error }}</p>
                            {% endfor %}
                            {{form.username.label}}

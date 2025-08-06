@@ -49,10 +49,14 @@ class UserChangeForm(forms.ModelForm):
         model = User
         fields = ["phone", "password", "is_active", "is_admin"]
 
+def start_with_0(value):
+    if value[0]!= '0' :
+        raise forms.ValidationError('phone should start with 0')
 
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(50)])  
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(12)])  
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    
 
 class AddressCreationForm(forms.ModelForm):
     user = forms.IntegerField(required=False)
@@ -62,10 +66,11 @@ class AddressCreationForm(forms.ModelForm):
 
 
 
-class OtpLoginForm(forms.Form):
-    phone = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(50)])  
+class RegisterForm(UserCreationForm):
+    phone = forms.CharField(label="موبایل",widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(12)])  
+    password1= forms.CharField(label="پسورد",widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(12)])
+    password2= forms.CharField(label="تایید پسورد",widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(12)])
+    class Meta:
+        model = User
+        fields = ('phone', 'password1')
 
-class CheckOtpForm(forms.Form):
-    phone = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.MaxLengthValidator(4)])       
-          
-          

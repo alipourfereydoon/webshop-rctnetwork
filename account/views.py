@@ -1,15 +1,12 @@
 from django.contrib.auth import authenticate, login,logout
-from django.shortcuts import render,redirect,reverse
+from django.shortcuts import render,redirect
 from django.views import View
-from .forms import LoginForm,OtpLoginForm,CheckOtpForm,AddressCreationForm
-import ghasedakpack
-from random import randint
-from .models import Otp,User,Contact
-from django.utils.crypto import get_random_string
-from uuid import uuid4
-
-SMS=ghasedakpack.Ghasedak('b4f8d77dfd2aaea9275d9a113c4825e0452893ae36ed3333797dea152c32d805LSZeryMyLPnu2SQ5')
-
+from .forms import LoginForm,RegisterForm,AddressCreationForm
+from .models import Register,User,Contact
+from django.urls import reverse_lazy
+from django.views.generic.edit import FormView
+from .forms import RegisterForm
+from django.contrib.auth import login, authenticate
 
 class UserLogin(View):
     def get(self,request):
@@ -28,52 +25,29 @@ class UserLogin(View):
                     return redirect(next_page)
                 return redirect('/')
             else:
-                form.add_error('phone','invalied phone')
+                form.add_error('username','invalied phone')
         else:
-            form.add_error('phone','invalid data') 
+            form.add_error('username','invalid data') 
 
         return render(request,'account/login.html',{'form':form})    
     
-class OtpLoginView(View):
-    def get(self,request):
-        form = OtpLoginForm()
-        return render(request,'account/otp_login.html',{'form':form})
 
-    def post(self,request):
-        form = OtpLoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            randcode = randint(1000,9999)
-            SMS.verification({'receptor':cd["phone"],'type':'1', 'template':'Ghasedak','param1':randcode})
-            token = str(uuid4())
-            Otp.objects.create(phone=cd['phone'],code=randcode,token=token)
-            print(randcode)
-            return redirect(reverse('account:check_otp')+ f'?token={token}')
-        else:
-            form.add_error("phone",'invalide data')
-        return render(request,'account/otp_login.html',{'form':form})   
+class RegisterView(FormView):
+    template_name = 'account/register.html'
+    form_class = RegisterForm
+    success_url = reverse_lazy('home:home')  # Replace 'home:home' with your URL name
 
+    def form_valid(self, form):
+        user = form.save()  # Save the new user
+        # Authenticate the user
+        authenticated_user = authenticate(
+            phone=user.phone,
+            password=form.cleaned_data['password1']  # or the appropriate password field
+        )
+        if authenticated_user is not None:
+            login(self.request, authenticated_user)  # Log the user in
+        return super().form_valid(form)
 
-class CheckOtpView(View):
-        def get(self,request):
-            form = CheckOtpForm()
-            return render(request,'account/check_otp.html',{'form':form})
-
-        def post(self,request):
-            token = request.GET.get('token')
-            form = CheckOtpForm(request.POST)
-            if form.is_valid():
-                cd = form.cleaned_data
-                if Otp.objects.filter(code=cd["phone"],token=token).exists():
-                    otp = Otp.objects.get(token=token)
-                    user, is_create = User.objects.get_or_create(phone=otp.phone)
-                    login(request,user,backend='django.contrib.auth.backends.ModelBackend')
-                    otp.delete()
-                    return redirect('/')
-                
-            else:
-                form.add_error("phone",'invalide data')
-            return render(request,'account/check_otp.html',{'form':form})  
 
 class AddAddressView(View):
     def post(self,request):
