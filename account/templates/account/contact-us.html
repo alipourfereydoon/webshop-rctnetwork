@@ -56,7 +56,8 @@
                             <a class="dropdown-item " href=" {% url "account:user_otp_login" %} " type="button">پروفایل</a>
                             <a class="dropdown-item" href=" {% url "account:user_logout" %} " type="button">خروج</a>
                             {% else %}
-                            <a class="dropdown-item" href=" {% url "account:user_otp_login" %} " type="button">ورود و ثبت نام</a>
+                            <a class="dropdown-item" href=" {% url "account:user_login" %} " type="button">ورود به حساب کاربری  </a>
+                            <a class="dropdown-item" href=" {% url "account:user_register" %} " type="button"> ثبت نام</a> 
                             {% endif %}
                         </div>
                     </div>
