@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_render_partial',
     'ticket',
+    'weblog'
 ]
 
 MIDDLEWARE = [

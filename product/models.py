@@ -9,22 +9,6 @@ class Category(models.Model):
         return self.title
 
 
-class Size(models.Model):
-    title = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.title
-    
-
-    
-class Color(models.Model):
-    title = models.CharField(max_length=20) 
-
-    def __str__(self):
-        return self.title   
-    
-
-
 class Product(models.Model):
     category = models.ManyToManyField(Category,blank=True,null=True)
     title = models.CharField(max_length=50)
@@ -32,8 +16,6 @@ class Product(models.Model):
     price = models.IntegerField()
     discount = models.IntegerField()
     image = models.ImageField(upload_to='products')
-    size =models.ManyToManyField("Size", related_name='products', null=True , blank=True)
-    color = models.ManyToManyField("Color", related_name='products')
 
     def __str__(self):
         return self.title
@@ -53,9 +35,7 @@ class Job(models.Model):
     price = models.IntegerField()
     discount = models.IntegerField()
     image = models.ImageField(upload_to='jobs')
-    # size =models.ManyToManyField("Size", related_name='products', null=True , blank=True)
-    # color = models.ManyToManyField("Color", related_name='products')
-
+    
     def __str__(self):
         return self.title
     
