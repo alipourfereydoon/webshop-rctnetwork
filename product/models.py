@@ -10,7 +10,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ManyToManyField(Category,blank=True,null=True)
+    category = models.ManyToManyField(Category)
     title = models.CharField(max_length=50)
     description =models.TextField()
     price = models.IntegerField()

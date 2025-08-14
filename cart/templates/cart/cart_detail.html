@@ -1,6 +1,151 @@
-{% extends "base.html" %}
 {% load static %}
-{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="utf-8">
+    <title>طراحی وب سایت</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <!-- Favicon -->
+    <link href="  {% static 'img/favicon.ico' %}" rel="icon">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href=" {% static 'lib/animate/animate.min.css' %} " rel="stylesheet">
+    <link href=" {% static 'lib/owlcarousel/assets/owl.carousel.min.css' %} " rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %} " rel="stylesheet">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="127.0.0.1:8000" />
+
+</head>
+<body>
+    
+<div class="container-fluid bg-dark mb-30" style="height: 65px;">
+<div class=" d-flex flex-column flex-md-row align-items-center justify-content-center">
+  
+        <h1 class="hide-on-small col-lg-4 col-md-6 col-sm-12 pb-1 font h1 text-uppercase text-primary bg-dark px-2 mb-2 mb-md-0">طراحی صفحات وب</h1>
+        <h2 style="height: 60px;" class="col-lg-6 col-md-6 col-sm-12 pb-1 font h1 text-uppercase text-dark bg-primary px-2 ml-n1 mb-2 mb-md-0"> شبکه پردازان فناور شهر راز</h2>
+ 
+</div>
+</div>
+  
+   <div class="container-fluid">
+        <div class="row bg-secondary py-1 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown">ورود و ثبت نام</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            {% if request.user.is_authenticated %}
+                            <a class="dropdown-item " href=" {% url "account:user_login" %} " type="button">پروفایل</a>
+                            <a class="dropdown-item" href=" {% url "account:user_logout" %} " type="button">خروج</a>
+                            {% else %}
+                            <a class="dropdown-item" href=" {% url "account:user_login" %} " type="button">ورود به حساب کاربری  </a>
+                            <a class="dropdown-item" href=" {% url "account:user_register" %} " type="button"> ثبت نام</a>                             {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-inline-flex align-items-center d-block d-lg-none">
+                    <a href="" class="btn px-0 ml-2">
+                        <i class="fas fa-heart text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                    </a>
+                    <a href="" class="btn px-0 ml-2">
+                        <i class="fas fa-shopping-cart text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+
+            <div class="col-lg-4 col-6 text-left">
+                <form action="{% url "home:search_product" %}" method="get">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="جستجوی محصولات">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-8 col-6 text-right">
+                <p class="m-0  ">سرویس مشتریان</p>
+                <h5 class="m-0 font">09177381998</h5>
+            </div>
+        </div>
+    </div>
+  <!-- Navbar Start -->
+    <div class="container-fluid bg-dark mb-30">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
+                    <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>دسته بندی ها</h6>
+                    <i class="fa fa-angle-down text-dark"></i>
+                </a>
+                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
+                    <div class="navbar-nav w-100">
+                        <div class="nav-item dropdown dropright">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">طراحی سایت فروشگاهی <i class="fa fa-angle-right float-right mt-1"></i></a>
+                            <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                                <a href="" class="dropdown-item">طراحی سایت لباس بچه گانه</a>
+                                <a href="" class="dropdown-item">طراحی سایت لباس مرانه</a>
+                                <a href="" class="dropdown-item">طراحی سایت لوازم التحریر</a>
+                            </div>
+                        </div>
+                        <a href="" class="nav-item nav-link">طراحی سایت آموزشی</a>
+                        <a href="" class="nav-item nav-link">طراحی سایت نوبت دهی</a>
+                        <a href="" class="nav-item nav-link">طراحی سایت اداری</a>
+                        <a href="" class="nav-item nav-link">طراحی سایت ههای تبلیعاتی</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <span class="h1 text-uppercase text-dark bg-light px-2">طراحی</span>
+                        <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">وب</span>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href=" {% url "home:home" %}" class="nav-item nav-link active">صفحه اصلی</a>
+                            <a href=" {% url "account:contact-us" %}" class="nav-item nav-link">تماس با ما</a>
+                            <a href=" {% url "home:aboutus" %}" class="nav-item nav-link">دریاره ما</a>
+                            <a  class="nav-item nav-link" target="_blank" title="وبلاگ" href="{% url "blog:blog" %}">وبلاگ </a>
+                            <a href=" {% url "ticket:ticket" %}" class="nav-item nav-link">ارسال تیکت و درخواست </a>
+                            <a href=" {% url "ticket:ticket" %}" class="nav-item nav-link">ویرایش اطلاعات کاربری</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                            <a href="" class="btn px-0">
+                                <i class="fas fa-heart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                            </a>
+                            <a href="" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+  
  <!-- Cart Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
@@ -65,8 +210,100 @@
     </div>
     <!-- Cart End -->
 
+ <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <h5 class="text-secondary text-uppercase mb-4">تماس با ما</h5>
+                <p class="mb-4">آدرس: شیراز - شهرک شهید بهشتی- کوچه 4 بوستان</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>شهرک شهید بهشتی</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>ali.pourferydoon@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>09177381998</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">دسترسی سریع</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href=" {% url "home:home" %}"><i class="fa fa-angle-right mr-2"></i>صفحه اصلی</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>مرکز پشتیبانی</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>قوانین و مقررات</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>ثبت شکایت</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>موقعیت های شغلی</a>
+                            <a class="text-secondary" href=" {% url "account:contact-us" %}"><i class="fa fa-angle-right mr-2"></i>تماس با ما</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">محصولات</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>وب سایت شرکتی</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>سایت فروشگاهی</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>سایت گردشگری</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>وب سایت املاک</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>سایت های شخصی و پروفایل</a>
+                            <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>سایت های فروش بلیط رویدادها</a>
+                             <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>وب سایت سخصی</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>وب سایت داروخانه </a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>سایت فروش لباس</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>وب سایت لوازم التحریر</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>سایت اینترنتی وکلا </a>
+                            <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i> وب سایت هتل و مراکز اقامتی</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">طراحی وب سایت های اینترنتی</h5>
+                        <p>طراحی وب سایت‌های اینترنتی حرفه‌ای و بهینه‌سازی شده برای 
+                            افزایش دیده‌شدن و جذب کاربران در موتورهای جستجو. خدمات ما تضمین می‌کند سایت شما در نتایج اول گوگل ظاهر شود.</p>
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Your Email Address">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                        <h6 class="text-secondary text-uppercase mt-4 mb-3">ما را در فضای مجازی دنبال کنید</h6>
+                        <div class="d-flex">
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="{% static 'img/payments.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+     
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-{% endblock main %}
+   <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    </body>
+
+</html>
 
 
 

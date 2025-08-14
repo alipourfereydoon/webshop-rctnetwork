@@ -1,65 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>مقالات طراحی سایت های اینترنتی</title>
+<style>
+  /* Reset some default styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-{% extends "base.html" %}
-{% load static %}
-{% block main %}
-<header>
-    <h1 style="text-align: center;">طراحی سایت چیست؟ </h1>
-</header>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+  }
 
-<div class="container1">
-    <section class="about-section">
-        <h2 style="text-align: right;">مراحل یادگیری طراحی سایت</h2>
-        <p style="text-align: right;">
-            طراحی سایت به فرایند ساخت و توسعه صفحات وب و برنامه‌های مرتبط با آن اشاره دارد که شامل طراحی ظاهری، ساختار، کارایی و تجربه کاربری می‌شود. این فرآیند می‌تواند شامل طراحی رابط کاربری (UI)، طراحی تجربه کاربری (UX)، برنامه‌نویسی، طراحی گرافیک، و بهینه‌سازی برای موتورهای جستجو (SEO) باشد. هدف از طراحی سایت ایجاد یک وب‌سایت جذاب، کاربرپسند و کارآمد است که بتواند نیازهای کاربران و اهداف کسب‌وکار را برآورده کند.
+  /* Sidebar styles */
+  .sidebar {
+    width: 250px; /* Width of the sidebar */
+    height: 100vh; /* Full viewport height */
+    background-color:#722F37; /* Dark background color */
+    color: #fff; /* Text color */
+    padding: 20px;
+    position: fixed; /* Fixed position for full height */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Scroll if content exceeds height */
+  }
 
-برای شروع یادگیری طراحی سایت، می‌توانید مراحل زیر را دنبال کنید:
+  /* Sidebar header */
+  .sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+  }
 
-1. آشنایی با مبانی طراحی وب:
-   - مفاهیم پایه‌ای طراحی گرافیک و تئوری رنگ‌ها
-   - اصول طراحی رابط کاربری و تجربه کاربری (UI/UX)
-2. یادگیری زبان‌های پایه‌ای وب:
-   - HTML: ساختار صفحات وب
-   - CSS: استایل‌دهی و طراحی ظاهری صفحات
-   - JavaScript: افزودن تعامل و دینامیک به صفحات
-3. آشنایی با ابزارهای طراحی و توسعه:
-   - نرم‌افزارهای طراحی گرافیک مانند Adobe XD، Figma
-   - ویرایشگرهای کد مانند VS Code
-4. تمرین و پروژه‌های عملی:
-   - طراحی صفحات ساده و تکامل آن به پروژه‌های پیچیده‌تر
-   - ساخت نمونه‌کار (پورتفولیو) برای نمایش مهارت‌ها
-5. یادگیری فریم‌ورک‌ها و کتابخانه‌ها:
-   - فریم‌ورک‌های CSS مانند Bootstrap
-   - کتابخانه‌های JavaScript مانند React، Vue.js یا Angular
-6. مطالعه درباره بهینه‌سازی و سئو:
-   - بهبود سرعت بارگذاری سایت
-   - رعایت استانداردهای سئو برای دیده‌شدن در موتورهای جستجو
-7. منابع آموزشی:
-   - دوره‌های آنلاین مانند Coursera، Udemy، freeCodeCamp
-   - ویدئوهای آموزشی یوتیوب
-   - کتاب‌های مرتبط با طراحی وب و برنامه‌نویسی
+  /* Navigation links styles */
+  .sidebar ul {
+    list-style: none;
+  }
 
-با شروع از مبانی و تمرین مداوم، می‌توانید مهارت‌های لازم برای طراحی سایت حرفه‌ای را کسب کنید. یادگیری مستمر و پروژه‌های عملی کلید موفقیت در این حوزه است.
-   </p>
-    </section>
+  .sidebar ul li {
+    margin-bottom: 15px;
+  }
+
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+
+  /* Hover effect for links */
+  .sidebar ul li a:hover {
+    background-color: #575757;
+  }
+
+  /* Main content styles */
+  .content {
+    margin-left: 250px; /* Same as sidebar width */
+    padding: 20px;
+    flex: 1;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 200px;
+    }
+    .content {
+      margin-left: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      flex-direction: column;
+    }
+    .sidebar {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+    .content {
+      margin-left: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>لیست مقالات</h2>
+  <ul>
+    <li><a href="#">انواع خطاهای مرتبط با سایت</a></li>
+    <li><a href="#">بهینه سازی سایت های اینترنتی</a></li>
+    <li><a href="#">چه کسانی به سایت های اینترنتی نیاز دارند</a></li>
+    <li><a href="#">backend</a></li>
+    <li><a href="#">front end</a></li>
+    <li><a href="#">صفحه اصلی</a></li>
+    <li><a href="#">درباره ما</a></li>
+    <li><a href="#"> تماس با ما</a></li>
+  </ul>
 </div>
 
+<!-- Main content -->
+<div class="content">
+  <h1 style="text-align: center;" title="مقالات برنامه نویسی">مقالات مرتبط با طراحی و تولید سایت های اینترنتی و دنیای برنامه نویسی</h1>
+  <p style="text-align: right;">
+در دنیای امروز، طراحی و تولید سایت‌های اینترنتی به عنوان یکی از پایه‌های اصلی حضور مؤثر در فضای مجازی شناخته می‌شود. مقالات مرتبط با این حوزه، به بررسی فناوری‌های نوین، روندهای طراحی کاربرپسند و بهینه‌سازی عملکرد سایت‌ها می‌پردازند. همچنین، در زمینه برنامه‌نویسی وب، ابزارها و زبان‌های مختلف مانند HTML، CSS، JavaScript و فریم‌ورک‌های مختلف، نقش کلیدی در توسعه سایت‌های دینامیک و قابل اعتماد ایفا می‌کنند.
+ مطالعه این مقالات برای توسعه‌دهندگان و طراحان وب، فرصت آشنایی با جدیدترین روش‌ها و بهترین شیوه‌ها را فراهم می‌آورد و به بهبود تجربه کاربری و افزایش بهره‌وری کمک می‌کند.  </p>
+  <!-- Add your main shop content here -->
+</div>
 
-
-{% endblock main %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>
