@@ -86,6 +86,9 @@ def contactus(request):
         return redirect('/') 
     return render(request,'account/contact-us.html')
 
+def profile(request):
+    return render(request,'account/profile.html',{})
+
 
 
 

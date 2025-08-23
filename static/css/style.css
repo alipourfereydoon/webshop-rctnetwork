@@ -1,30 +1,4 @@
-/******* Bootstrap Theming ********/
-/*!
- * Bootstrap v4.5.3 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 
-/* @font-face {
-  font-family: 'yekan';
-  src: url('fonts/yekan.eot?#iefix') format('embedded-opentype');
-  src: url('fonts/yekan.ttf') format('truetype');
-  src: url('fonts/yekan.woff') format('woff')
-}
-
- @font-face {
-  font-family:vazir;
-  src: url(fonts/vazir.ttf) format(ttf);
-  src: url(fonts/vazir.woff) format(wof);
- } */
- /* @font-face {
-  font-family:tanha;
-  src: url(fonts/Tanha.ttf) format(ttf);
-  src: url(fonts/tanha.woff) format(woff);
-  src: url(fonts/Tanha.woff2) format(woff2);
-  src: url(fonts/Tanha.eot) format(eot)
- } */
 
 @font-face {
   font-family: 'yekan';
